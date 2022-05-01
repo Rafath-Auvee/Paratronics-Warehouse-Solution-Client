@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.user_image{
+  width: 5%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.dropdown-toggle::after {
+  display: none !important; 
+}
+
+Nav a{
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+Nav a:hover{
+  transition: 0.3s;
+  color: aqua
+}
