@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+/* font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif; */
+.product-contrainer {
+  margin: 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 17px;
+  margin-bottom: 10px;
+}
+
+.product-text {
+  word-wrap: break-word;
+  font-family: "Montserrat", sans-serif;
+  /* line-height: 3px; */
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.product-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+}
+
+#image-product {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+
+#image-product:hover {
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
+.product-card {
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  /* display: inline-block; */
+  /* margin: 1rem; */
+  height: 430px;
+  width: 300px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.product-card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.buttons-section {
+  border: 2px solid red;
+}
+
+.detail {
+  background-color: orangered;
+  color: white;
+  border-radius: 18px;
+}
+
+.buttons {
+  display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .product-image {
+    height: 150px;
+  }
+
+  .product-title {
+    font-size: 1rem;
+  }
+  .product-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+/* 14 */
+.btn-14 {
+  background: #000;
+  color: black;
+  z-index: 1;
+  
+}
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #e0e5ec;
+  transition: all 0.3s ease;
+}
+.btn-14:hover {
+  color: #000;
+}
+.btn-14:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+  border-radius: 10px;
+}
+.btn-14:active {
+  top: 2px;
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+.btn-16 {
+  background: #000;
+ color: #fff;
+ z-index: 1;
+}
+.btn-16:after {
+ position: absolute;
+ content: "";
+ width: 0;
+ height: 100%;
+ top: 0;
+ left: 0;
+ direction: rtl;
+ z-index: -1;
+ background: #e0e5ec;
+ transition: all 0.3s ease;
+}
+.btn-16:hover {
+ color: #000;
+}
+.btn-16:hover:after {
+ left: auto;
+ right: 0;
+ border-radius: 10px;
+ width: 100%;
+}
+.btn-16:active {
+ top: 2px;
+}
+
+@media screen and (max-width: 400px) {
+  .product-card {
+    height: 300px;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .product-card {
+    height: 330px;
+    width: 260px;
+  }
+
+  .product-image {
+    width: 100%;
+  }
+
+}

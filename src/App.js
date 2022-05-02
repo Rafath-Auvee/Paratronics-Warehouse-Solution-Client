@@ -8,7 +8,7 @@ import Inventory from "./components/Page/Inventory/Inventory"
 import Order from "./components/Page/Order/Order"
 import Login from "./components/Authentication/Login/Login"
 import Register from "./components/Authentication/Register/Register"
-import Detail from "./components/Page/Detail/Detail.js"
+import Product from "./components/Page/Product/Product.js"
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory/>} />
-        <Route path="/inventory/:id" element={<Detail/>} />
+        <Route path="/inventory/:id" element={<Product/>} />
         <Route path="/order" element={<Order/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />

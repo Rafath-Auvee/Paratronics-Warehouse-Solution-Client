@@ -6,12 +6,12 @@ const baseURL = "http://localhost:5000/products";
 
 const useProducts = () => {
 
-  const [products, setProducts] = useState()
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     axios.get(`${baseURL}`).then((res) => {
       setProducts(res.data);
-      console.log(setProducts)
+      // console.log(setProducts)
     });
   }, []);
 

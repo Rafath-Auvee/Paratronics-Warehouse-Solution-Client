@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-// import useProducts from "../../Hooks/useProducts.js"
-
-const baseURL = "http://localhost:5000/products";
-
+import React from "react";
+import useProducts from "../../Hooks/useProducts.js";
+import Detail from "../Detail/Detail.js";
+import "./Inventory.css"
 const Inventory = () => {
-  const [products, setProducts] = useState([]);
-  let i = 1
-  useEffect(() => {
-    axios.get(`${baseURL}`).then((res) => {
-      setProducts(res.data);
-      console.log(setProducts)
-    });
-
-    
-  }, []);
-
+  const [products, setProducts] = useProducts([]);
+  // console.log(products)
   return (
     <div>
-      {products.map((product) => (
-        <h1>Product {i++} </h1>
-      ))}
+      <div className="products-container">
+        {products.map((product) => (
+          <Detail key={product._id} product={product}/>
+        ))}
+      </div>
     </div>
   );
 };
