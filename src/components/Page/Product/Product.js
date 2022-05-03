@@ -1,8 +1,9 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
 
 const Product = (props) => {
-
-  const {name, description, price, supplier_name, url, quantity} = props.props.product;
+  const location = useLocation();
+  const {name, description, price, supplier_name, url, quantity} = location.state
   
   return (
     <div>
