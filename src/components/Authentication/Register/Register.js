@@ -3,6 +3,7 @@ import { LockClosedIcon } from "@heroicons/react/solid";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import Spinner from "react-bootstrap/Spinner";
+import Loading from "../../Utilities/Spinner/Loading.js"
 
 import {
   useCreateUserWithEmailAndPassword,
@@ -27,12 +28,18 @@ const Register = () => {
   };
 
   if (loading || updating) {
-    return <Spinner animation="grow" variant="dark" />;
+    return <Loading/>;
   }
 
   if (user) {
     console.log(user?.user?.email);
     return toast(`Welcome ${user?.user?.email}`);
+  }
+
+  if(error || updateError)
+  {
+    toast(`Something went wrong`);
+    // navigate('/register')
   }
 
   const handleRegister = async (event) => {

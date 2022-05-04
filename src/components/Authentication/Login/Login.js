@@ -10,7 +10,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-
+import Loading from "../../Utilities/Spinner/Loading.js"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init.js";
 
@@ -28,17 +28,19 @@ const Login = () => {
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   if (loading || sending) {
-    return <Spinner animation="grow" variant="dark" />;
+    return <Loading/>;
   }
 
   if (user) {
-    console.log(user?.user?.email)
+    // console.log(user?.user?.email)
     // return (toast(`Welcome ${user?.user?.email}`));
-    // navigate(from, { replace: true });
+    toast(`Welcome ${user?.user?.email}`)
+    navigate(from, { replace: true });
   }
   
   if (error) {
-    errorElement = <p className="text-danger">Error: {error?.message}</p>;
+    
+    toast(`Error: ${error?.message}`)
   }
 
   const handleSubmit = async (event) => {
@@ -49,10 +51,6 @@ const Login = () => {
     await signInWithEmailAndPassword(email, password);
     // const { data } = await axios.post("http://localhost:5000/login", { email });
     // localStorage.setItem("accessToken", data.accessToken);
-    if(user)
-    {
-      navigate("/inventory");
-    }
     
   };
 
@@ -154,7 +152,7 @@ const Login = () => {
               </Link>
             </div>
           </form>
-          {errorElement}
+          
         </div>
       </div>
     </div>
