@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
+  apiKey: "AIzaSyCQIMgZTuG-1CISerMuf0q8PS2qfU444iw",
+  authDomain: "paratronics-2213d.firebaseapp.com",
+  projectId: "paratronics-2213d",
+  storageBucket: "paratronics-2213d.appspot.com",
+  messagingSenderId: "423397072694",
+  appId: "1:423397072694:web:ff18abab172fe853925d97",
 };
 
 const app = initializeApp(firebaseConfig);

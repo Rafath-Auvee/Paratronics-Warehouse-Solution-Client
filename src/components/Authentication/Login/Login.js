@@ -34,12 +34,11 @@ const Login = () => {
   if (user) {
     // console.log(user?.user?.email)
     // return (toast(`Welcome ${user?.user?.email}`));
-    toast(`Welcome ${user?.user?.email}`)
+    toast(`Welcome ${user?.user?.displayName}. Login Successfully`)
     navigate(from, { replace: true });
   }
   
   if (error) {
-    
     toast(`Error: ${error?.message}`)
   }
 

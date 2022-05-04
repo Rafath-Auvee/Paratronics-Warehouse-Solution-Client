@@ -33,15 +33,18 @@ const Register = () => {
 
   if (user) {
     console.log(user?.user?.email);
-    return toast(`Welcome ${user?.user?.email}`);
+    console.log(user?.user?.displayName);
+    toast(`Welcome ${user?.user?.displayName}. Please verify your email. Check your mail`);
+    navigate("/");
   }
 
   if(error || updateError)
   {
-    toast(`Something went wrong`);
-    // navigate('/register')
+    toast(`Error: ${error?.message}`)
+    // toast(`Something went wrong`);
+    navigate('/register')
   }
-
+  
   const handleRegister = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -52,7 +55,6 @@ const Register = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
     console.log("Updated profile");
-    navigate("/home");
   };
 
   return (
