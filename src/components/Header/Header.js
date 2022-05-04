@@ -22,7 +22,7 @@ const Header = () => {
           bg="dark"
           variant="dark"
           expand={expand}
-          className="mb-5 me-auto "
+          className="me-auto "
         >
           <Container fluid>
             <Navbar.Brand to="/" className="pe-3">
