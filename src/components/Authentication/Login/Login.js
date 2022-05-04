@@ -10,9 +10,10 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import Loading from "../../Utilities/Spinner/Loading.js"
+import Loading from "../../Utilities/Spinner/Loading.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init.js";
+import GoogleLogin from "../GoogleLogin/GoogleLogin.js"
 
 const Login = () => {
   const email_ref = useRef("");
@@ -28,18 +29,18 @@ const Login = () => {
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   if (loading || sending) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   if (user) {
     // console.log(user?.user?.email)
     // return (toast(`Welcome ${user?.user?.email}`));
-    toast(`Welcome ${user?.user?.displayName}. Login Successfully`)
+    toast(`Welcome ${user?.user?.displayName}. Login Successfully`);
     navigate(from, { replace: true });
   }
-  
+
   if (error) {
-    toast(`Error: ${error?.message}`)
+    toast(`Error: ${error?.message}`);
   }
 
   const handleSubmit = async (event) => {
@@ -50,7 +51,6 @@ const Login = () => {
     await signInWithEmailAndPassword(email, password);
     // const { data } = await axios.post("http://localhost:5000/login", { email });
     // localStorage.setItem("accessToken", data.accessToken);
-    
   };
 
   const navigateRegister = (event) => {
@@ -68,8 +68,8 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-slate-200 w-auto my-auto">
-      <div className="container h-fit  flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-100 w-auto my-auto">
+      <div className="container h-fit  flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 ">
           <div>
             <img
@@ -81,7 +81,12 @@ const Login = () => {
               Sign in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
+          <form
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div className="my-2">
@@ -140,7 +145,7 @@ const Login = () => {
                 </Link>
               </div>
             </div>
-            <div className="text-1xl text-center mt-2 justify-content-center pb-8">
+            <div className="text-1xl text-center mt-2 justify-content-center ">
               No Account?
               <Link
                 to="/register"
@@ -150,8 +155,8 @@ const Login = () => {
                 Create your account
               </Link>
             </div>
+            <GoogleLogin/>
           </form>
-          
         </div>
       </div>
     </div>

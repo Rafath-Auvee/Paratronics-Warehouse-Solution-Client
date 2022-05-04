@@ -56,7 +56,7 @@ const Header = () => {
               <Offcanvas.Body>
                 <Nav
                   className={`justify-content-start flex-grow-1 px-3 nav-menu  ${
-                    user ? "mt-2" : ""
+                    user ? "custom-margin" : ""
                   } `}
                 >
                   <CustomLink to="/">Home</CustomLink>
@@ -68,19 +68,19 @@ const Header = () => {
                   {user ? (
                     <>
                       {" "}
-                      {/* { (user?.photoURL) ? <> </> : <>} */}
-                      
-                      <NavDropdown
+                      { (user?.photoURL) ? <>
+                        <NavDropdown
                         className="ms-auto mx-16"
-                        
                         title={
-                          <div className="flex justify-content-center text-align-center"> 
-                          <img
-                            className="user_image "
-                            src={(user?.photoURL) }
-                            alt="user pic"
-                          />
-                          <p className="pl-3 text-white">{user?.displayName}</p>
+                          <div className="flex justify-content-center text-align-center">
+                            <img
+                              className="user_image "
+                              src={user?.photoURL}
+                              alt="user pic"
+                            />
+                            <p className="pl-3 text-white user-name">
+                              {user?.displayName}
+                            </p>
                           </div>
                         }
                         id="basic-nav-dropdown"
@@ -104,7 +104,7 @@ const Header = () => {
                           </span>
                         </NavDropdown.Item>
                         <NavDropdown.Item />
-                        <NavDropdown.Item >
+                        <NavDropdown.Item>
                           <Button
                             variant="primary"
                             size="lg"
@@ -115,6 +115,51 @@ const Header = () => {
                           </Button>
                         </NavDropdown.Item>
                       </NavDropdown>{" "}
+                       </> : <>  <NavDropdown
+                        className="ms-auto mx-16"
+                        title={
+                          <Button
+                            variant="primary"
+                            size="sm"
+                            className="mx-2"
+                            
+                          >
+                            My Account
+                          </Button>
+                        }
+                        id="basic-nav-dropdown"
+                      >
+                        <NavDropdown.Item to="/addproduct">
+                          Add Product
+                        </NavDropdown.Item>
+                        <NavDropdown.Item to="/manageproduct">
+                          Manage Product
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          to="/order"
+                          className="justify-content-center"
+                        >
+                          Order
+                          <Badge className="mx-2 mt-2 " bg="dark">
+                            9
+                          </Badge>
+                          <span className="visually-hidden">
+                            unread messages
+                          </span>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item />
+                        <NavDropdown.Item>
+                          <Button
+                            variant="primary"
+                            size="lg"
+                            className="mx-2"
+                            onClick={handleSignOut}
+                          >
+                            Sign Out
+                          </Button>
+                        </NavDropdown.Item>
+                      </NavDropdown> </>}
+                      
                     </>
                   ) : (
                     <>

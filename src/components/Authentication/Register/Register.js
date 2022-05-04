@@ -58,7 +58,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-slate-200 ">
+    <div className="bg-slate-100 ">
 
       <div className="min-h-full flex items-center justify-center py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
