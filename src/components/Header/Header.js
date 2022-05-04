@@ -78,9 +78,9 @@ const Header = () => {
                               src={user?.photoURL}
                               alt="user pic"
                             />
-                            <p className="pl-3 text-white user-name">
+                            <Button variant="info" className="pl-1 mx-3 text-black success user-name">
                               {user?.displayName}
-                            </p>
+                            </Button>
                           </div>
                         }
                         id="basic-nav-dropdown"
@@ -106,7 +106,7 @@ const Header = () => {
                         <NavDropdown.Item />
                         <NavDropdown.Item>
                           <Button
-                            variant="primary"
+                            variant="danger"
                             size="lg"
                             className="mx-2"
                             onClick={handleSignOut}
@@ -150,7 +150,7 @@ const Header = () => {
                         <NavDropdown.Item />
                         <NavDropdown.Item>
                           <Button
-                            variant="primary"
+                            variant="danger"
                             size="lg"
                             className="mx-2"
                             onClick={handleSignOut}

@@ -19,8 +19,8 @@ const GoogleLogin = () => {
 
   if (user) {
     // console.log(user?.user?.email);
-    console.log(user?.user?.photoURL)
-    console.log(user?.user)
+    // console.log(user?.user?.auth?.currentUser?.photoURL)
+    // console.log(user?.user)
     // console.log(user?.user?.displayName);
     toast(
       `Welcome ${user?.user?.displayName}. Please verify your email. Check your mail`
