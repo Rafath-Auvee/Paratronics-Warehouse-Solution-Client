@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 .user_image{
-  width: 5%;
-  height: auto;
+  /* border: 1px solid white; */
+  width: 15%;
+  height: 5%;
   border-radius: 50%;
 }
 

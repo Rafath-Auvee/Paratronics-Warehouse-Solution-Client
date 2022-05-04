@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import Spinner from "react-bootstrap/Spinner";
 import Loading from "../../Utilities/Spinner/Loading.js"
-
+import GoogleLogin from "../GoogleLogin/GoogleLogin.js"
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -60,7 +60,7 @@ const Register = () => {
   return (
     <div className="bg-slate-200 ">
 
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-full flex items-center justify-center py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -180,6 +180,7 @@ const Register = () => {
                   Sign In
                 </Link>
               </div>
+              <GoogleLogin/>
             </div>
           </form>
         </div>

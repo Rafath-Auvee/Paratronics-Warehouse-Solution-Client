@@ -21,7 +21,6 @@ const RequireAuth = ({ children }) => {
     if(error)
     {
       toast("Something went wrong. Please try again")
-      
     }
     
     if (user.providerData[0]?.providerId ==='password' && !user.emailVerified) {

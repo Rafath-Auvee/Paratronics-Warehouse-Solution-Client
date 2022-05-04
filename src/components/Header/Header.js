@@ -68,15 +68,20 @@ const Header = () => {
                   {user ? (
                     <>
                       {" "}
+                      {/* { (user?.photoURL) ? <> </> : <>} */}
+                      
                       <NavDropdown
-                        className="ms-auto"
-                        eventKey={1}
+                        className="ms-auto mx-16"
+                        
                         title={
+                          <div className="flex justify-content-center text-align-center"> 
                           <img
-                            className="user_image"
-                            src="https://i.ibb.co/LJ2BGT2/121105442-creative-illustration-of-default-avatar-profile-placeholder-isolated-on-background-art-des.webp"
+                            className="user_image "
+                            src={(user?.photoURL) }
                             alt="user pic"
                           />
+                          <p className="pl-3 text-white">{user?.displayName}</p>
+                          </div>
                         }
                         id="basic-nav-dropdown"
                       >
@@ -98,11 +103,11 @@ const Header = () => {
                             unread messages
                           </span>
                         </NavDropdown.Item>
-                        <NavDropdown.Item divider />
-                        <NavDropdown.Item eventKey={1.3}>
+                        <NavDropdown.Item />
+                        <NavDropdown.Item >
                           <Button
                             variant="primary"
-                            size="sm"
+                            size="lg"
                             className="mx-2"
                             onClick={handleSignOut}
                           >
