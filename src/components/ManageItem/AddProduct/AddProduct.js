@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LockClosedIcon, PlusCircleIcon } from "@heroicons/react/solid";
+import { PlusCircleIcon } from "@heroicons/react/solid";
+import SuccessModal from "../../Utilities/SuccessModal/SuccessModal.js";
 const AddProduct = () => {
   const [tos, setTos] = useState(true);
-
+  const [modalShow, setModalShow] = useState(false);
   const handleAddProduct = (e) => {
     e.preventDefault();
     const name = e.target.ProductName.value;
@@ -11,29 +12,30 @@ const AddProduct = () => {
     const price = e.target.price.value;
     const quantity = e.target.productquantity.value;
     const url = e.target.PhotoURL.value;
-    const supplierName = e.target.SupplierName.value
+    const supplierName = e.target.SupplierName.value;
 
-    const product = {name, description, price, quantity, url, supplierName};
-    console.log(product)
-    // if(product)
-    // {
-    //   setTos(current => !current)
-    // }
-
-    fetch("http://localhost:5000/addproduct", {
+    const product = { name, description, price, quantity, url, supplierName };
+    console.log(product);
+    if (product) {
+      console.log("All inputs are working");
+    } else {
+      console.log("All inputs are empty");
+    }
+    const api = `http://localhost:5000/inventory`;
+    fetch(api, {
       method: "POST",
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
-      body: JSON.stringify(product)
+      body: JSON.stringify(product),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log('Working and the Data', data)
-      e.target.reset()
-    })
-
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Working and the Data", data);
+        e.target.reset();
+        setModalShow(true)
+      });
+  };
   return (
     <div>
       <div className="bg-slate-100 ">
@@ -142,7 +144,7 @@ const AddProduct = () => {
               <div>
                 <button
                   type="submit"
-                  disabled={!tos}
+                  // onClick={() => setModalShow(true)}
                   className={`${
                     tos
                       ? "bg-cyan-600 hover:bg-cyan-700 text-white focus:ring-cyan-500"
@@ -158,6 +160,11 @@ const AddProduct = () => {
                   </span>
                   Add Product
                 </button>
+
+                <SuccessModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
               </div>
             </form>
           </div>
