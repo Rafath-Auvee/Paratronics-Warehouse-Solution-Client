@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Page/Home/Home";
 import Inventory from "./components/Page/Inventory/Inventory";
-import Order from "./components/Page/Order/Order";
+import MyItems from "./components/ManageItem/MyItem/MyItems.js";
 import Login from "./components/Authentication/Login/Login";
 import Register from "./components/Authentication/Register/Register";
 import Product from "./components/Page/Product/Product.js";
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/:id" element={<Product />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/myitems" element={<MyItems />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/addproduct" element={<AddProduct />} />

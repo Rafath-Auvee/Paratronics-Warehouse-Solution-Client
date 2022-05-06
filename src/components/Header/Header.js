@@ -61,7 +61,7 @@ const Header = () => {
                 >
                   <CustomLink to="/">Home</CustomLink>
                   <CustomLink to="/inventory">Inventory</CustomLink>
-                  {/* <CustomLink to="/order">Order</CustomLink> */}
+                  {/* <CustomLink to="/myitems">MyItems</CustomLink> */}
                 </Nav>
 
                 <Nav>
@@ -85,17 +85,17 @@ const Header = () => {
                         }
                         id="basic-nav-dropdown"
                       >
-                        <NavDropdown.Item to="/addproduct">
+                        <NavDropdown.Item as={Link} to="/addproduct">
                           Add Product
                         </NavDropdown.Item>
-                        <NavDropdown.Item to="/manageproduct">
-                          Manage Product
+                        <NavDropdown.Item as={Link} to="/manageproduct">
+                          All Products
                         </NavDropdown.Item>
-                        <NavDropdown.Item
-                          to="/order"
+                        <NavDropdown.Item as={Link}
+                          to="/myitems"
                           className="justify-content-center"
                         >
-                          Order
+                          My Items
                           <Badge className="mx-2 mt-2 " bg="dark">
                             9
                           </Badge>
@@ -107,7 +107,7 @@ const Header = () => {
                         <NavDropdown.Item>
                           <Button
                             variant="danger"
-                            size="lg"
+                            size="sm"
                             className="mx-2"
                             onClick={handleSignOut}
                           >
@@ -129,17 +129,17 @@ const Header = () => {
                         }
                         id="basic-nav-dropdown"
                       >
-                        <NavDropdown.Item to="/addproduct">
+                        <NavDropdown.Item as={Link} to="/addproduct">
                           Add Product
                         </NavDropdown.Item>
-                        <NavDropdown.Item to="/manageproduct">
-                          Manage Product
+                        <NavDropdown.Item as={Link} to="/manageproduct">
+                          All Products
                         </NavDropdown.Item>
-                        <NavDropdown.Item
-                          to="/order"
+                        <NavDropdown.Item as={Link}
+                          to="/myitems"
                           className="justify-content-center"
                         >
-                          Order
+                          My Items
                           <Badge className="mx-2 mt-2 " bg="dark">
                             9
                           </Badge>
@@ -151,7 +151,7 @@ const Header = () => {
                         <NavDropdown.Item>
                           <Button
                             variant="danger"
-                            size="lg"
+                            size="sm"
                             className="mx-2"
                             onClick={handleSignOut}
                           >

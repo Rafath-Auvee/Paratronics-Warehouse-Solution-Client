@@ -32,10 +32,10 @@ const Detail = (props) => {
             >
               Detail
             </button>
-            <button className="buttons-section order custom-btn btn-14">
+            {/* <button className="buttons-section order custom-btn btn-14">
               
-              <Link to={`/inventory/${id}`}>Order</Link> 
-            </button>
+              <Link to={`/inventory/${id}`}>MyItems</Link> 
+            </button> */}
           </div>
         </div>
       </div>
