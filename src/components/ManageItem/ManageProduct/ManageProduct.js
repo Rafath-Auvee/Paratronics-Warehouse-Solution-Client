@@ -1,36 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import useProducts from "../../Hooks/useProducts.js";
+import { Button } from "react-bootstrap";
 const ManageProduct = () => {
+  const [products, setProducts] = useProducts([]);
+  let i = 1;
   return (
     <div>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th className="text-center">Edit</th>
+            <th className="text-center">Delete</th>
+            {/* <th>Last Name</th>
+            <th>Username</th> */}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {products.map((product) => (
+            
+            <tr className="align-middle" key={product._id}>
+              <td>{i++}</td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+              <td>{product.quantity}</td>
+              <td className="text-center"><Button variant="warning">Edit</Button> </td>
+              <td className="text-center"><Button variant="danger">Delete</Button></td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

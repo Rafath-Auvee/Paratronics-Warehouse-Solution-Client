@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PlusCircleIcon } from "@heroicons/react/solid";
 import SuccessModal from "../../Utilities/SuccessModal/SuccessModal.js";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init.js";
+
 const AddProduct = () => {
   const [tos, setTos] = useState(true);
   const [modalShow, setModalShow] = useState(false);
-  const handleAddProduct = (e) => {
+  const email_ref = useRef("");
+  
+  const [user] = useAuthState(auth);
+  // 
+
+  const handleAddProduct = async(e) => {
     e.preventDefault();
     const name = e.target.ProductName.value;
     const description = e.target.description.value;
-    const price = e.target.price.value;
-    const quantity = e.target.productquantity.value;
+    const price = parseInt(e.target.price.value);
+    const quantity = parseInt(e.target.productquantity.value);
     const url = e.target.PhotoURL.value;
     const supplierName = e.target.SupplierName.value;
+    const email = await (user?.email)
+    const product = { name, description, price, quantity, url, supplierName, email };
 
-    const product = { name, description, price, quantity, url, supplierName };
     console.log(product);
     if (product) {
       console.log("All inputs are working");
@@ -33,7 +42,10 @@ const AddProduct = () => {
       .then((data) => {
         console.log("Working and the Data", data);
         e.target.reset();
-        setModalShow(true)
+        setModalShow(true);
+        
+        console.log(user?.user?.email);
+        console.log(user?.email);
       });
   };
   return (
