@@ -1,22 +1,44 @@
 import React from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from "react-router-dom";
 
 const Product = (props) => {
   const location = useLocation();
-  const {name, description, price, supplier_name, url, quantity} = location.state
-  
+  const { name, description, price, supplier_name, url, quantity } =
+    location.state;
+
   return (
     <div>
-      <div className="product-contrainer">
-        <img src={url} className="product-image" alt="" />
-        <h4 className="product-title">Product Name: {name}</h4>
-        <p className="product-text description">Description: {description} </p>
-        <p className="product-text suplier">Suplier: {supplier_name}</p>
-        <p className="product-text quantity">Quantity: {quantity}</p>
-        <p className="product-text price">Price: {price}$</p>
-      </div>
-    </div>
+    <div className="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+        <div className="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+            <div className="lg:w-1/2">
+                <div className="h-64 bg-cover lg:rounded-lg lg:h-full">
+                  <img src={url} alt="" />
+                </div>
+            </div>
+            <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
+                <h2 className="text-3xl text-gray-800 font-bold">Name: <span className="text-indigo-600">{name}</span></h2>
+                <p className="mt-4 text-gray-600">Description: {description}</p>
+                <p className="mt-4 text-gray-600">Suplier: {supplier_name}</p>
+                <p className="mt-4 text-gray-600">Quantity: {quantity}</p>
+                <p className="mt-4 text-gray-600">Price: {price}$</p>
+                <div className="mt-8">
+                    <button to="" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delivered</button>
+                    <button to="" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add More</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
   );
 };
 
 export default Product;
+
+// <div className="product-contrainer">
+//   <img src={url} className="product-image" alt="" />
+//   <h4 className="product-title">Product Name: {name}</h4>
+//   <p className="product-text description">Description: {description} </p>
+//   <p className="product-text suplier">Suplier: {supplier_name}</p>
+//   <p className="product-text quantity">Quantity: {quantity}</p>
+//   <p className="product-text price">Price: {price}$</p>
+// </div>

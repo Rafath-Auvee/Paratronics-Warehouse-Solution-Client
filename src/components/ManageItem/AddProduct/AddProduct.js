@@ -12,6 +12,7 @@ const AddProduct = () => {
   
   const [user] = useAuthState(auth);
   // 
+  
 
   const handleAddProduct = async(e) => {
     e.preventDefault();

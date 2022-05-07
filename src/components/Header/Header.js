@@ -38,7 +38,7 @@ const Header = () => {
                 src={logo}
                 width="30"
                 height="30"
-                className="d-inline-block align-top"
+                className="d-inline-block align-top brand-logo-non-user"
               />{" "}
               Paratronics
             </Navbar.Brand>
@@ -56,7 +56,7 @@ const Header = () => {
               <Offcanvas.Body>
                 <Nav
                   className={`justify-content-start flex-grow-1 px-3 nav-menu  ${
-                    user ? "custom-margin" : ""
+                    user ? "custom-margin" : "non-user-margin"
                   } `}
                 >
                   <CustomLink to="/">Home</CustomLink>
@@ -120,9 +120,8 @@ const Header = () => {
                         title={
                           <Button
                             variant="primary"
-                            size="sm"
+                            size="lg"
                             className="mx-2"
-                            
                           >
                             My Account
                           </Button>

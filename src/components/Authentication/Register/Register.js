@@ -169,7 +169,7 @@ const Register = () => {
                     aria-hidden="true"
                   />
                 </span>
-                Sign in
+                Sign up
               </button>
               <div className="text-1xl text-center mt-2 justify-content-center ">
                 Have Account?

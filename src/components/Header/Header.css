@@ -20,6 +20,14 @@
 .dropdown-toggle::after {
   display: none !important; 
 }
+.brand-logo-non-user
+{
+  margin-top:5px;
+}
+.non-user-margin
+{
+  
+}
 
 Nav a{
   text-decoration: none;

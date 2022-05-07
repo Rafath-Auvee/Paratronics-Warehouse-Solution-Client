@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import AddProduct from "./components/ManageItem/AddProduct/AddProduct.js";
 import ManageProduct from "./components/ManageItem/ManageProduct/ManageProduct.js";
 import "react-toastify/dist/ReactToastify.css";
+import RequireAuth from "../src/components/Authentication/RequiredAuth/RequiredAuth.js";
 function App() {
   return (
     <div className="App">
@@ -20,14 +21,43 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
-        <Route path="/inventory/:id" element={<Product />} />
-        <Route path="/myitems" element={<MyItems />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/addproduct" element={<AddProduct />} />
-        <Route path="/manageproduct" element={<ManageProduct />} />
+
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequireAuth>
+              <Product />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/myitems"
+          element={
+            <RequireAuth>
+              <MyItems />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/addproduct"
+          element={
+            <RequireAuth>
+              <AddProduct />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manageproduct"
+          element={
+            <RequireAuth>
+              <ManageProduct />
+            </RequireAuth>
+          }
+        />
       </Routes>
-      <ToastContainer />
+      <ToastContainer limit={4} newestOnTop />
     </div>
   );
 }

@@ -14,7 +14,7 @@ const SuccessModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4>Greetings</h4>
         <p>
           Product Added Successfully
         </p>
