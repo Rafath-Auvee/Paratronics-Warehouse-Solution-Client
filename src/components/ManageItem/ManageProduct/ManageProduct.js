@@ -4,8 +4,10 @@ import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
 import useProducts from "../../Hooks/useProducts.js";
 import { Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import "./Manage.css"
 const ManageProduct = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [item, setItem] = useState([]);
@@ -66,7 +68,7 @@ const ManageProduct = () => {
 
     console.log(product);
   };
-  
+
   const plusQuantity = (product) => {
     // const frmdetails = {
     //   total: inputQuantity,
@@ -127,9 +129,18 @@ const ManageProduct = () => {
     console.log(event.target.total.value);
     setQty(event.target.total.value);
   };
+  const navigateProduct = (id) => {
+    navigate(`/inventory/${id}`);
+  }
 
+  const editProduct = async(product) => {
+    await navigate(`/editproduct/${product.id}`, { state: product });
+  }
   return (
     <div>
+      <Button size="lg" className="mx-4 my-3" variant="dark">
+        <Link className="addItem" to="/addproduct">Add New Item</Link>
+      </Button>{" "}
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -138,7 +149,8 @@ const ManageProduct = () => {
             <th>Price</th>
             <th>Quantity</th>
             <th className="text-center">Delivered</th>
-            <th className="text-center">Add Quantity</th>
+            <th className="text-center">Add One</th>
+            <th className="text-center">Add More</th>
             <th className="text-center">Edit</th>
             <th className="text-center">Delete</th>
             {/* <th>Last Name</th>
@@ -180,7 +192,12 @@ const ManageProduct = () => {
                 </Button>{" "}
               </td>
               <td className="text-center">
-                <Button size="sm" variant="warning">
+                <Button size="sm" onClick={()=>navigateProduct(product._id)} variant="primary">
+                  Manage   
+                </Button>{" "}
+              </td>
+              <td className="text-center">
+                <Button size="sm" variant="warning" onClick={()=>editProduct(product)}>
                   Edit
                 </Button>{" "}
               </td>

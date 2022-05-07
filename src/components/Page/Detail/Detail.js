@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Detail.css";
 import { Link } from "react-router-dom";
-
+import ProductModal from "../ProductModal/ProductModal.js";
 import { useNavigate, useParams } from "react-router-dom";
 const Detail = (props) => {
-  const { _id, name, description, price, supplier_name, url, quantity } =
-    props.product;
+  
+  const [modalShow, setModalShow] = useState(false);
+  const { _id, name, description, price, supplier_name, url, quantity } = props.product;
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -32,20 +33,24 @@ const Detail = (props) => {
           <div className="buttons justify-content-evenly">
             <button
               className="custom-btn btn-16"
-              onClick={() => goProduct(_id)}
+              
+              onClick={() => setModalShow(true)}
               product={props.product}
             >
               Detail
             </button>
             <button
               className="buttons-section order custom-btn btn-14"
-              onClick={() => MangeProduct(_id)}
+              // onClick={() => setModalShow(true)}
+              onClick={() => goProduct(_id)}
               product={props.product}
             >
               {/* <Link to={`/inventory/${id}`}>Manage</Link>  */}
               Manage
             </button>
           </div>
+
+          <ProductModal product={props.product} show={modalShow} onHide={() => setModalShow(false)} />
         </div>
       </div>
     </div>

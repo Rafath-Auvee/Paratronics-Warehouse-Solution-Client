@@ -10,6 +10,7 @@ import Register from "./components/Authentication/Register/Register";
 import Product from "./components/Page/Product/Product.js";
 import { ToastContainer } from "react-toastify";
 import AddProduct from "./components/ManageItem/AddProduct/AddProduct.js";
+import EditProduct from "./components/ManageItem/EditProduct/EditProduct.js";
 import ManageProduct from "./components/ManageItem/ManageProduct/ManageProduct.js";
 import "react-toastify/dist/ReactToastify.css";
 import RequireAuth from "../src/components/Authentication/RequiredAuth/RequiredAuth.js";
@@ -45,6 +46,14 @@ function App() {
           element={
             <RequireAuth>
               <AddProduct />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/editproduct/:id"
+          element={
+            <RequireAuth>
+              <EditProduct />
             </RequireAuth>
           }
         />

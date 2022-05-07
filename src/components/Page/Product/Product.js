@@ -1,66 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import "./Product.css"
+const Product = (props) => {
+  const { id } = useParams();
+  const location = useLocation();
+  // const { name, description, price, supplier_name, url, quantity } =
+  //   location.state;
 
-const plusQuantity = (product, id) => {
-  const quantity = parseInt(product) + 1;
-  const updateproduct = { quantity };
-
-  fetch(`http://localhost:5000/inventory/${id}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(updateproduct),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("success", data);
-      toast.info("Quantity Added", {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    });
-  console.log(product);
-};
-
-const moreQuantity = (event) => {
-  const quantity = parseInt(product) + 1;
-  const updateproduct = { quantity };
-
-  fetch(`http://localhost:5000/inventory/${id}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(updateproduct),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("success", data);
-      toast.info("Quantity Added", {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    });
-  console.log(product);
-};
-
-const deliveredItem = (product, id) => {
-  let quantity = parseInt(product);
-  console.log("in delivered function");
-  if (quantity > 0) {
-    quantity = quantity - 1;
+  const plusQuantity = (product, id) => {
+    const quantity = parseInt(product) + 1;
     const updateproduct = { quantity };
-    // console.log(product._id);
+
     fetch(`http://localhost:5000/inventory/${id}`, {
       method: "PUT",
       headers: {
@@ -71,8 +22,8 @@ const deliveredItem = (product, id) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("success", data);
-        toast.success("Product Delivered Successfully", {
-          position: "top-center",
+        toast.info("Quantity Added", {
+          position: "top-left",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -80,25 +31,77 @@ const deliveredItem = (product, id) => {
           draggable: true,
         });
       });
-  } else {
-    toast.error("Sorry Stock Out", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-  }
+    console.log(product);
+  };
 
-  console.log(product);
-};
+  const moreQuantity = (event) => {
+    event.preventDefault()
+    const number = parseInt(event.target.total_quantity.value);
+    const quantity =
+    parseInt(product.quantity) + parseInt(event.target.total_quantity.value);
+    const updateproduct = { quantity };
 
-const Product = (props) => {
-  const { id } = useParams();
-  const location = useLocation();
-  const { name, description, price, supplier_name, url, quantity } =
-    location.state;
+    fetch(`http://localhost:5000/inventory/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateproduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("success", data);
+        toast.info(`${number} Quantity Added 😍`, {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      });
+    console.log(product);
+  };
+
+  const deliveredItem = (product, id) => {
+    let quantity = parseInt(product);
+    console.log("in delivered function");
+    if (quantity > 0) {
+      quantity = quantity - 1;
+      const updateproduct = { quantity };
+      // console.log(product._id);
+      fetch(`http://localhost:5000/inventory/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateproduct),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("success", data);
+          toast.success("Product Delivered Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        });
+    } else {
+      toast.error("Sorry Stock Out", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+
+    console.log(product);
+  };
 
   const [product, setProduct] = useState([]);
   const [no, setNo] = useState(0);
@@ -111,14 +114,14 @@ const Product = (props) => {
         // console.log(data, id)
       });
   }, [product]);
-  
+
   return (
     <div>
       <div className="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
         <div className="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
           <div className="lg:w-1/2">
             <div className="h-64 bg-cover lg:rounded-lg lg:h-full">
-              <img src={url} alt="" />
+              <img className="container img-height" fluid="true" src={product.url} alt="" />
             </div>
           </div>
           <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
@@ -146,21 +149,25 @@ const Product = (props) => {
               >
                 Add One
               </button>
-              <button
-                onClick={() => moreQuantity(product.quantity, id)}
-                className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-              >
-                Add More
-              </button>
+              <form onSubmit={moreQuantity} className="">
+                <input
+                
+                  type="number"
+                  min="1"
+                  name="total_quantity"
+                  placeholder="Place quantity"
+                  className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm pl-3 py-2.5 mb-2 mr-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 input_width"
+                />
+                <button type="submit"
+                  
+                  className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+                >
+                  Add More
+                </button>
 
-              {/* Form  */}
+                {/* Form  */}
+              </form>
             </div>
-            <input
-              type="number"
-              min="1"
-              placeholder="Place your quantity in decimal"
-              className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
-            />
           </div>
         </div>
       </div>

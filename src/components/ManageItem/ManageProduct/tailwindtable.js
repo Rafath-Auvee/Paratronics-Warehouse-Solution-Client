@@ -165,7 +165,7 @@ const tailwindtable = () => {
     </div>
   );
 };
-
+// fetch(`http://localhost:5000/myitems?email=${email}`)
 export default tailwindtable;<div className="container relative overflow-x-auto shadow-md sm:rounded-lg sm:w">
         <div className="p-4">
           <label htmlFor="table-search" className="sr-only">

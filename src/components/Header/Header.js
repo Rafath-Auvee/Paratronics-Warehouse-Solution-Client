@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   Navbar,
   Container,
@@ -18,6 +18,24 @@ import { signOut } from "firebase/auth";
 import auth from "../../firebase.init.js";
 const Header = () => {
   const [user] = useAuthState(auth);
+  const [products, setProducts] = useState([]);
+  const [No, setNo] = useState(0);
+  const email = user?.email
+
+  useEffect(
+    (id) => {
+      fetch(`http://localhost:5000/myitems?email=${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts(data);
+          setNo(data.length)
+          // setItem(data)
+          // setNo(data.quantity)
+          // console.log("data",data)
+        });
+    },
+    [products]
+  );
   const handleSignOut = () => {
     signOut(auth);
   };
@@ -96,8 +114,8 @@ const Header = () => {
                           className="justify-content-center"
                         >
                           My Items
-                          <Badge className="mx-2 mt-2 " bg="dark">
-                            9
+                          <Badge className="mx-2" bg="dark">
+                            {No}
                           </Badge>
                           <span className="visually-hidden">
                             unread messages
@@ -140,7 +158,7 @@ const Header = () => {
                         >
                           My Items
                           <Badge className="mx-2 mt-2 " bg="dark">
-                            9
+                            {No}
                           </Badge>
                           <span className="visually-hidden">
                             unread messages

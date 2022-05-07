@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import useProducts from "../../Hooks/useProducts.js";
 import Detail from "../Detail/Detail.js";
-import "./Inventory.css"
+
+import "./Inventory.css";
 const Inventory = () => {
   const [products, setProducts] = useProducts([]);
   // console.log(products)
@@ -9,9 +10,10 @@ const Inventory = () => {
     <div>
       <div className="products-container">
         {products.map((product) => (
-          <Detail key={product._id} product={product}/>
+          <Detail key={product._id} product={product} />
         ))}
       </div>
+      
     </div>
   );
 };
