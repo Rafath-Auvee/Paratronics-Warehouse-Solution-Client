@@ -1,34 +1,170 @@
-import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const plusQuantity = (product, id) => {
+  const quantity = parseInt(product) + 1;
+  const updateproduct = { quantity };
+
+  fetch(`http://localhost:5000/inventory/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(updateproduct),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("success", data);
+      toast.info("Quantity Added", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    });
+  console.log(product);
+};
+
+const moreQuantity = (event) => {
+  const quantity = parseInt(product) + 1;
+  const updateproduct = { quantity };
+
+  fetch(`http://localhost:5000/inventory/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(updateproduct),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("success", data);
+      toast.info("Quantity Added", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    });
+  console.log(product);
+};
+
+const deliveredItem = (product, id) => {
+  let quantity = parseInt(product);
+  console.log("in delivered function");
+  if (quantity > 0) {
+    quantity = quantity - 1;
+    const updateproduct = { quantity };
+    // console.log(product._id);
+    fetch(`http://localhost:5000/inventory/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateproduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("success", data);
+        toast.success("Product Delivered Successfully", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      });
+  } else {
+    toast.error("Sorry Stock Out", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }
+
+  console.log(product);
+};
 
 const Product = (props) => {
+  const { id } = useParams();
   const location = useLocation();
   const { name, description, price, supplier_name, url, quantity } =
     location.state;
 
+  const [product, setProduct] = useState([]);
+  const [no, setNo] = useState(0);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/inventory/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data);
+        // console.log(data, id)
+      });
+  }, [product]);
+  
   return (
     <div>
-    <div className="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+      <div className="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
         <div className="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-            <div className="lg:w-1/2">
-                <div className="h-64 bg-cover lg:rounded-lg lg:h-full">
-                  <img src={url} alt="" />
-                </div>
+          <div className="lg:w-1/2">
+            <div className="h-64 bg-cover lg:rounded-lg lg:h-full">
+              <img src={url} alt="" />
             </div>
-            <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
-                <h2 className="text-3xl text-gray-800 font-bold">Name: <span className="text-indigo-600">{name}</span></h2>
-                <p className="mt-4 text-gray-600">Description: {description}</p>
-                <p className="mt-4 text-gray-600">Suplier: {supplier_name}</p>
-                <p className="mt-4 text-gray-600">Quantity: {quantity}</p>
-                <p className="mt-4 text-gray-600">Price: {price}$</p>
-                <div className="mt-8">
-                    <button to="" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delivered</button>
-                    <button to="" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add More</button>
-                </div>
+          </div>
+          <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
+            <h2 className="text-3xl text-gray-800 font-bold">
+              Name: <span className="text-indigo-600">{product.name}</span>
+            </h2>
+            <p className="mt-4 text-gray-600">
+              Description: {product.description}
+            </p>
+            <p className="mt-4 text-gray-600">
+              Suplier: {product.supplier_name}
+            </p>
+            <p className="mt-4 text-gray-600">Quantity: {product.quantity}</p>
+            <p className="mt-4 text-gray-600">Price: {product.price}$</p>
+            <div className="mt-8">
+              <button
+                onClick={() => deliveredItem(product.quantity, id)}
+                className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >
+                Delivered
+              </button>
+              <button
+                onClick={() => plusQuantity(product.quantity, id)}
+                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              >
+                Add One
+              </button>
+              <button
+                onClick={() => moreQuantity(product.quantity, id)}
+                className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              >
+                Add More
+              </button>
+
+              {/* Form  */}
             </div>
+            <input
+              type="number"
+              min="1"
+              placeholder="Place your quantity in decimal"
+              className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
+            />
+          </div>
         </div>
-    </div> 
-</div>
+      </div>
+    </div>
   );
 };
 
