@@ -42,7 +42,7 @@ const EditProduct = () => {
     } else {
       console.log("All inputs are empty");
     }
-    const api = `http://localhost:5000/editproduct/${_id}`;
+    const api = `https://intense-plains-05397.herokuapp.com/editproduct/${_id}`;
     fetch(api, {
       method: "PUT",
       headers: {

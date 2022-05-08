@@ -31,7 +31,7 @@ const AddProduct = () => {
     } else {
       console.log("All inputs are empty");
     }
-    const api = `http://localhost:5000/inventory`;
+    const api = `https://intense-plains-05397.herokuapp.com/inventory`;
     fetch(api, {
       method: "POST",
       headers: {

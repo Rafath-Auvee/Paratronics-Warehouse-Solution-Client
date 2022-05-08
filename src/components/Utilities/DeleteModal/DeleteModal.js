@@ -13,7 +13,7 @@ const DeleteModal = (props) => {
 
 
       // const confirmDelete = async (id) => {
-      //   const url = `http://localhost:5000/inventory/${id}`;
+      //   const url = `https://intense-plains-05397.herokuapp.com/inventory/${id}`;
       //   console.log(id);
       //   fetch(url, {
       //     method: "DELETE",

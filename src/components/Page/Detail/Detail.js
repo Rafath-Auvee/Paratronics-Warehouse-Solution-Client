@@ -12,7 +12,7 @@ const Detail = (props) => {
   const { id } = useParams();
 
   const goProduct = async (id) => {
-    const baseURL = `http://localhost:5000/inventory/${_id}`;
+    const baseURL = `https://intense-plains-05397.herokuapp.com/inventory/${_id}`;
     console.log(baseURL);
     console.log(props.product);
     await navigate(`/inventory/${id}`, { state: props.product });

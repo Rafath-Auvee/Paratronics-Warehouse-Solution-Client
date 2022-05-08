@@ -9,7 +9,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-
+import useToken from '../../Hooks/useToken.js';
 import { Link, useNavigate } from "react-router-dom";
 
 import auth from "../../../firebase.init.js";
@@ -18,7 +18,7 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+  const [token] = useToken(user);
   const navigate = useNavigate();
 
   const [tos, setTos] = useState(false);
@@ -31,11 +31,10 @@ const Register = () => {
     return <Loading/>;
   }
 
-  if (user) {
-    console.log(user?.user?.email);
-    console.log(user?.user?.displayName);
-    toast(`Welcome ${user?.user?.displayName}. Please verify your email. Check your mail`);
-    navigate("/");
+
+  if (token) {
+    toast(`Welcome ${user?.user?.displayName}.`);
+    navigate('/home');
   }
 
   if(error || updateError)
@@ -142,14 +141,14 @@ const Register = () => {
                 </label>
               </div>
 
-              <div className="text-sm">
+              {/* <div className="text-sm">
                 <Link
                   to=""
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
                   Forgot your password?
                 </Link>
-              </div>
+              </div> */}
             </div>
 
             <div>

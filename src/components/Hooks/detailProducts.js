@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-const baseURL = "http://localhost:5000/inventory";
+const baseURL = "https://intense-plains-05397.herokuapp.com/inventory";
 
 const useProducts = () => {
 

@@ -16,6 +16,8 @@ import "react-toastify/dist/ReactToastify.css";
 import RequireAuth from "../src/components/Authentication/RequiredAuth/RequiredAuth.js";
 import Footer from "../src/components/Page/Footer/Footer.js"
 import Invalid from "../src/components/Page/Invalid/Invalid.js"
+import Blog from "./components/Page/Blog/Blog.js"
+import About from "../src/components/Page/About/About.js"
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,8 @@ function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/tos" element={<About />} />
         <Route path="*" element={<Invalid/>} />
         <Route
           path="/inventory/:id"

@@ -1,10 +1,10 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import "./Banner.css"
+import "./Banner.css";
 const Banner = () => {
   return (
     <div>
-      <Carousel >
+      <Carousel>
         <Carousel.Item>
           <img
             className="d-block w-100 tales"
@@ -12,8 +12,10 @@ const Banner = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h5 className="text-6xl mb-5">First slide label</h5>
-            <p className="text-3xl mb-5">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h5 className="text-6xl mb-5">Welcome to</h5>
+            <p className="text-3xl mb-5">
+              Paratronics Warehouse Solution. For electronics inventory.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -23,8 +25,11 @@ const Banner = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h5 className="text-6xl mb-5">Second slide label</h5>
-            <p className="text-3xl mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h5 className="text-6xl mb-5">Want to manage your items?</h5>
+            <p className="text-3xl mb-5">
+              Our systematic approach to sourcing, storing, and selling
+              inventory—both raw materials and finished goods.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -34,9 +39,11 @@ const Banner = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h5 className="text-6xl mb-5">Third slide label</h5>
-            <p className="text-3xl mb-5">
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            <h5 className="text-6xl mb-5 text-sky-500">For growing businesses.</h5>
+            <p className="text-3xl mb-5 text-sky-500">
+              Increase your sales and keep track of every unit with our powerful
+              stock management, order fulfillment, and inventory control
+              software.
             </p>
           </Carousel.Caption>
         </Carousel.Item>

@@ -10,32 +10,58 @@ import {
   Badge,
 } from "react-bootstrap";
 import logo from "../../logo.svg";
-import { Link } from "react-router-dom";
+import { useLocation, Link, useParams,useNavigate } from "react-router-dom";
 import "./Header.css";
 import CustomLink from "../Utilities/CustomLink/CustomLink.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
+
 import auth from "../../firebase.init.js";
+import axiosPrivate from "../Hooks/axiosPrivate.js"
 const Header = () => {
   const [user] = useAuthState(auth);
   const [products, setProducts] = useState([]);
   const [No, setNo] = useState(0);
   const email = user?.email
+  const navigate = useNavigate()
+  const { id } = useParams();
+  const location = useLocation();
+  // useEffect(
+  //   (id) => {
+  //     fetch(`https://intense-plains-05397.herokuapp.com/myitems?email=${email}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setProducts(data);
+  //         setNo(data.length)
+  //         // setItem(data)
+  //         // setNo(data.quantity)
+  //         // console.log("data",data)
+  //       });
+  //   },
+  //   [products]
+  // );
 
-  useEffect(
-    (id) => {
-      fetch(`http://localhost:5000/myitems?email=${email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setProducts(data);
-          setNo(data.length)
-          // setItem(data)
-          // setNo(data.quantity)
-          // console.log("data",data)
-        });
-    },
-    [products]
-  );
+//   useEffect( () => {
+        
+//     const getOrders = async() =>{
+//         const email = user?.email;
+//         const url = `https://intense-plains-05397.herokuapp.com/myitems?email=${email}`;
+//         try{
+//           const {data} = await axiosPrivate.get(url);
+//           setProducts(data);
+//           setNo(data.length)
+//       }
+//       catch(error){
+//           console.log(error.message);
+//           if(error.response.status === 401 || error.response.status === 403){
+//               signOut(auth);
+//               navigate('/login')
+//           }
+//       }
+//   }
+//   getOrders();
+// }, [user])
+
   const handleSignOut = () => {
     signOut(auth);
   };
@@ -53,7 +79,7 @@ const Header = () => {
             <Navbar.Brand to="/" className="pe-3">
               <img
                 alt=""
-                src={logo}
+                src="fav.png"
                 width="30"
                 height="30"
                 className="d-inline-block align-top brand-logo-non-user"
@@ -61,7 +87,7 @@ const Header = () => {
               Paratronics
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
+            <Navbar.Offcanvas variant="dark"
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
@@ -79,6 +105,8 @@ const Header = () => {
                 >
                   <CustomLink to="/">Home</CustomLink>
                   <CustomLink to="/inventory">Inventory</CustomLink>
+                  <CustomLink to="/blogs">Blog</CustomLink>
+                  <CustomLink to="/tos">Conditions of Use</CustomLink>
                   {/* <CustomLink to="/myitems">MyItems</CustomLink> */}
                 </Nav>
 
@@ -115,7 +143,7 @@ const Header = () => {
                         >
                           My Items
                           <Badge className="mx-2" bg="dark">
-                            {No}
+                            {/* {No} */}
                           </Badge>
                           <span className="visually-hidden">
                             unread messages
@@ -158,7 +186,7 @@ const Header = () => {
                         >
                           My Items
                           <Badge className="mx-2 mt-2 " bg="dark">
-                            {No}
+                            {/* {No} */}
                           </Badge>
                           <span className="visually-hidden">
                             unread messages

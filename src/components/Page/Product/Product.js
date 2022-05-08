@@ -12,7 +12,7 @@ const Product = (props) => {
     const quantity = parseInt(product) + 1;
     const updateproduct = { quantity };
 
-    fetch(`http://localhost:5000/inventory/${id}`, {
+    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,7 @@ const Product = (props) => {
     parseInt(product.quantity) + parseInt(event.target.total_quantity.value);
     const updateproduct = { quantity };
 
-    fetch(`http://localhost:5000/inventory/${id}`, {
+    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -70,7 +70,7 @@ const Product = (props) => {
       quantity = quantity - 1;
       const updateproduct = { quantity };
       // console.log(product._id);
-      fetch(`http://localhost:5000/inventory/${id}`, {
+      fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -80,7 +80,7 @@ const Product = (props) => {
         .then((res) => res.json())
         .then((data) => {
           console.log("success", data);
-          toast.success("Product Delivered Successfully", {
+          toast.success("Product Delivered Successfully 😎", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -107,7 +107,7 @@ const Product = (props) => {
   const [no, setNo] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/inventory/${id}`)
+    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);

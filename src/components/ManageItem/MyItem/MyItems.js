@@ -6,7 +6,10 @@ import useProducts from "../../Hooks/useProducts.js";
 import { Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init.js";
+import axiosPrivate from "../../Hooks/axiosPrivate.js"
+import axios from "axios";
 const MyItems = () => {
   const navigate = useNavigate()
   const { id } = useParams();
@@ -17,20 +20,43 @@ const MyItems = () => {
   const [inputQuantity, setInputquantity] = useState("");
   const [user] = useAuthState(auth);
   const email = user?.email
-  useEffect(
-    (id) => {
-      fetch(`http://localhost:5000/myitems?email=${email}`)
-        .then((res) => res.json())
-        .then((data) => {
+  // useEffect(
+  //   (id) => {
+  //     fetch(`https://intense-plains-05397.herokuapp.com/myitems?email=${email}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setProducts(data);
+  //         // setNo(data.length)
+  //         // setItem(data)
+  //         // setNo(data.quantity)
+  //         // console.log("data",data)
+  //       });
+  //   },
+  //   [products]
+  // );
+
+  // setProducts(data);
+  
+  useEffect( () => {
+        
+    const getOrders = async() =>{
+        const email = user?.email;
+        const url = `https://intense-plains-05397.herokuapp.com/myitems?email=${email}`;
+        try{
+          const {data} = await axiosPrivate.get(url);
           setProducts(data);
-          // setNo(data.length)
-          // setItem(data)
-          // setNo(data.quantity)
-          // console.log("data",data)
-        });
-    },
-    [products]
-  );
+      }
+      catch(error){
+          console.log(error.message);
+          if(error.response.status === 401 || error.response.status === 403){
+              signOut(auth);
+              navigate('/login')
+          }
+      }
+  }
+  getOrders();
+}, [user])
+
 
   let i = 1;
 
@@ -40,7 +66,7 @@ const MyItems = () => {
       quantity = quantity - 1;
       const updateproduct = { quantity };
       console.log(product._id);
-      fetch(`http://localhost:5000/inventory/${product._id}`, {
+      fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -82,7 +108,7 @@ const MyItems = () => {
     const quantity = parseInt(product.quantity) + 1;
     const updateproduct = { quantity };
     console.log(product._id);
-    fetch(`http://localhost:5000/inventory/${product._id}`, {
+    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -107,7 +133,7 @@ const MyItems = () => {
   const confirmDelete = async (id) => {
     const agree = window.confirm("Confirm?");
     if (agree) {
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://intense-plains-05397.herokuapp.com/inventory/${id}`;
       console.log(id);
       fetch(url, {
         method: "DELETE",
@@ -162,8 +188,10 @@ const MyItems = () => {
           </tr>
         </thead>
         <tbody>
+        
           {products.map((product) => (
             <tr className="align-middle" key={product._id}>
+              
               <td>{i++}</td>
               <td>{product.name}</td>
               <td>{product.price}</td>

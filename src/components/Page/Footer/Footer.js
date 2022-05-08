@@ -12,7 +12,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Jobs
                 </Link>
@@ -20,7 +20,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Merch
                 </Link>
@@ -28,7 +28,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Brand
                 </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Meetups
                 </Link>
@@ -49,7 +49,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   News
                 </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Press
                 </Link>
@@ -65,7 +65,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Blog
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Hosting
                 </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Domains
                 </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Security
                 </Link>
@@ -102,7 +102,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   SSL
                 </Link>
@@ -115,7 +115,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Twitter
                 </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 text-xl custom_link "
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Facebook
                 </Link>
@@ -131,7 +131,7 @@ export default function Footer() {
               <li>
                 <Link
                   className="text-white hover:text-red-500 transition-colors duration-200 font-semibold text-xl custom_link"
-                  to=""
+                  to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 >
                   Instagram
                 </Link>
@@ -143,7 +143,7 @@ export default function Footer() {
           <ul className="flex flex-col space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <li>
               <Link
-                to=""
+                to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Terms of Service
@@ -151,7 +151,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to=""
+                to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Privacy Policy
@@ -159,7 +159,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to=""
+                to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Ad Choices
@@ -167,7 +167,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to=""
+                to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Cookie Policy
@@ -175,7 +175,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to=""
+                to="https://github.com/Rafath-Bin-Zafar-Auvee"
                 className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Partners
@@ -184,10 +184,10 @@ export default function Footer() {
           </ul>
           <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <Link
-              to=""
+              to="https://github.com/Rafath-Bin-Zafar-Auvee"
               className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link tracking-tight"
             >
-              © 2021 Company Inc.
+             Paratronics © 2022 Warehouse Solution.
             </Link>
           </ul>
         </div>

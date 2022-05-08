@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import Spinner from "react-bootstrap/Spinner";
+import {Spinner, Button} from "react-bootstrap";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import {
   useSendPasswordResetEmail,
@@ -14,7 +14,7 @@ import Loading from "../../Utilities/Spinner/Loading.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init.js";
 import GoogleLogin from "../GoogleLogin/GoogleLogin.js"
-
+import useToken from '../../Hooks/useToken.js';
 const Login = () => {
   const email_ref = useRef("");
   const password_ref = useRef("");
@@ -27,16 +27,29 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
+  const [token] = useToken(user);
   if (loading || sending) {
     return <Loading />;
   }
 
-  if (user) {
-    // console.log(user?.user?.email)
-    // return (toast(`Welcome ${user?.user?.email}`));
-    toast(`Welcome ${user?.user?.displayName}. Login Successfully`);
-    navigate(from, { replace: true });
+  // if (user) {
+  //   // console.log(user?.user?.email)
+  //   // return (toast(`Welcome ${user?.user?.email}`));
+  //   toast(`Welcome ${user?.user?.displayName}. Login Successfully`);
+  //   navigate(from, { replace: true });
+  // }
+
+  if (token) {
+    toast.success(`Welcome ${user?.user?.displayName}. Login Successfully`, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    // navigate(from, { replace: true });
+    navigate("/")
   }
 
   if (error) {
@@ -49,8 +62,8 @@ const Login = () => {
     const password = password_ref.current.value;
 
     await signInWithEmailAndPassword(email, password);
-    // const { data } = await axios.post("http://localhost:5000/login", { email });
-    // localStorage.setItem("accessToken", data.accessToken);
+    const { data } = await axios.post("https://intense-plains-05397.herokuapp.com/login", { email });
+    localStorage.setItem("accessToken", data.accessToken);
   };
 
   const navigateRegister = (event) => {
@@ -63,7 +76,7 @@ const Login = () => {
       await sendPasswordResetEmail(email);
       toast("Sent email");
     } else {
-      toast("please enter your email address");
+      toast.error("please enter your email address");
     }
   };
 
@@ -137,12 +150,12 @@ const Login = () => {
             </div>
             <div className="text-center">
               <div className="text-sm">
-                <Link
-                  to=""
+                <Button variant="link"
+                  onClick={()=>resetPassword()}
                   className="font-medium text-cyan-600 hover:text-cyan-500"
                 >
                   Forgot your password?
-                </Link>
+                </Button>
               </div>
             </div>
             <div className="text-1xl text-center mt-2 justify-content-center ">

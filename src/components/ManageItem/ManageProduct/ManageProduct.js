@@ -16,7 +16,7 @@ const ManageProduct = () => {
   const [inputQuantity, setInputquantity] = useState("");
   useEffect(
     (id) => {
-      fetch(`http://localhost:5000/inventory`)
+      fetch(`https://intense-plains-05397.herokuapp.com/inventory`)
         .then((res) => res.json())
         .then((data) => {
           setProducts(data);
@@ -36,7 +36,7 @@ const ManageProduct = () => {
       quantity = quantity - 1;
       const updateproduct = { quantity };
       console.log(product._id);
-      fetch(`http://localhost:5000/inventory/${product._id}`, {
+      fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -78,7 +78,7 @@ const ManageProduct = () => {
     const quantity = parseInt(product.quantity) + 1;
     const updateproduct = { quantity };
     console.log(product._id);
-    fetch(`http://localhost:5000/inventory/${product._id}`, {
+    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -103,7 +103,7 @@ const ManageProduct = () => {
   const confirmDelete = async (id) => {
     const agree = window.confirm("Confirm?");
     if (agree) {
-      const url = `http://localhost:5000/inventory/${id}`;
+      const url = `https://intense-plains-05397.herokuapp.com/inventory/${id}`;
       console.log(id);
       fetch(url, {
         method: "DELETE",
