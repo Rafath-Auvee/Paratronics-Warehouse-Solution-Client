@@ -37,7 +37,7 @@ const Register = () => {
     navigate('/home');
   }
 
-  if(error || updateError)
+  if(error)
   {
     toast(`Error: ${error?.message}`)
     // toast(`Something went wrong`);

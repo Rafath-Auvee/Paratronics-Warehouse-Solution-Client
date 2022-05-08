@@ -91,10 +91,11 @@ const Header = () => {
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
+              className="offcanvasBack"
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
+                 Paratronics
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
