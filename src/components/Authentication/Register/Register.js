@@ -34,7 +34,7 @@ const Register = () => {
 
   if (token) {
     toast(`Welcome ${user?.user?.displayName}.`);
-    navigate('/home');
+    navigate('/');
   }
 
   if(error)

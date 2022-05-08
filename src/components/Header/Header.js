@@ -91,23 +91,23 @@ const Header = () => {
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
-              className="offcanvasBack"
+              
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                  Paratronics
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body>
+              <Offcanvas.Body className="offcanvasBack">
                 <Nav
                   className={`justify-content-start flex-grow-1 px-3 nav-menu  ${
                     user ? "custom-margin" : "non-user-margin"
                   } `}
                 >
-                  <CustomLink to="/">Home</CustomLink>
-                  <CustomLink to="/inventory">Inventory</CustomLink>
-                  <CustomLink to="/blogs">Blog</CustomLink>
-                  <CustomLink to="/tos">Conditions of Use</CustomLink>
+                  <CustomLink className="custom_Link_user" to="/">Home</CustomLink>
+                  <CustomLink className="custom_Link_user" to="/inventory">Inventory</CustomLink>
+                  <CustomLink className="custom_Link_user" to="/blogs">Blog</CustomLink>
+                  <CustomLink className="custom_Link_user" to="/tos">Conditions of Use</CustomLink>
                   {/* <CustomLink to="/myitems">MyItems</CustomLink> */}
                 </Nav>
 
@@ -210,8 +210,8 @@ const Header = () => {
                   ) : (
                     <>
                       {" "}
-                      <CustomLink to="/login">Login</CustomLink>
-                      <CustomLink to="/register">Register</CustomLink>
+                      <CustomLink className="custom_Link_user" to="/login">Login</CustomLink>
+                      <CustomLink className="custom_Link_user" to="/register">Register</CustomLink>
                     </>
                   )}
                 </Nav>

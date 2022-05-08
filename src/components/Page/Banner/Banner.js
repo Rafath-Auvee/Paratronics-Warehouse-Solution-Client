@@ -28,7 +28,7 @@ const Banner = () => {
             <h5 className="text-6xl mb-5">Want to manage your items?</h5>
             <p className="text-3xl mb-5">
               Our systematic approach to sourcing, storing, and selling
-              inventory—both raw materials and finished goods.
+              inventory materials and goods.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
