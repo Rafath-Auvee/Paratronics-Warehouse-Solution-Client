@@ -130,7 +130,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  className="text-white hover:text-red-500 transition-colors duration-200 font-semibold text-xl"
+                  className="text-white hover:text-red-500 transition-colors duration-200 font-semibold text-xl custom_link"
                   to=""
                 >
                   Instagram
@@ -144,7 +144,7 @@ export default function Footer() {
             <li>
               <Link
                 to=""
-                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Terms of Service
               </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
             <li>
               <Link
                 to=""
-                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Privacy Policy
               </Link>
@@ -160,7 +160,7 @@ export default function Footer() {
             <li>
               <Link
                 to=""
-                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Ad Choices
               </Link>
@@ -168,7 +168,7 @@ export default function Footer() {
             <li>
               <Link
                 to=""
-                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Cookie Policy
               </Link>
@@ -176,7 +176,7 @@ export default function Footer() {
             <li>
               <Link
                 to=""
-                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link"
               >
                 Partners
               </Link>
@@ -185,7 +185,7 @@ export default function Footer() {
           <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <Link
               to=""
-              className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold tracking-tight"
+              className="text-md text-gray-200 hover:text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold custom_link tracking-tight"
             >
               © 2021 Company Inc.
             </Link>

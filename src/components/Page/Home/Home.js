@@ -5,11 +5,12 @@ import Newsletter from "../Newsletter/Newsletter.js";
 import Banner from "../Banner/Banner.js"
 import useProducts from "../../Hooks/useProducts.js"
 import Detail from "../Detail/Detail.js"
+import "./Home.css"
 const Home = () => {
   const [products, setProducts] = useProducts([]);
   return (
     <div className="bg-slate-200">
-      <Banner className="w-1/2"/>
+      <Banner className="banner-section"/>
       <h3 className="mt-12 text-center text-4xl text-sky-800">Products Currently Available</h3>
       <div className="products-container">
         
