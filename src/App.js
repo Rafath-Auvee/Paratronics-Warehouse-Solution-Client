@@ -14,6 +14,7 @@ import EditProduct from "./components/ManageItem/EditProduct/EditProduct.js";
 import ManageProduct from "./components/ManageItem/ManageProduct/ManageProduct.js";
 import "react-toastify/dist/ReactToastify.css";
 import RequireAuth from "../src/components/Authentication/RequiredAuth/RequiredAuth.js";
+import Footer from "../src/components/Page/Footer/Footer.js"
 function App() {
   return (
     <div className="App">
@@ -66,6 +67,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
       <ToastContainer limit={4} newestOnTop />
     </div>
   );
