@@ -165,7 +165,7 @@ const tailwindtable = () => {
     </div>
   );
 };
-// fetch(`https://intense-plains-05397.herokuapp.com/myitems?email=${email}`)
+// fetch(`https://paratronics-serverless.vercel.app/myitems?email=${email}`)
 export default tailwindtable;<div className="container relative overflow-x-auto shadow-md sm:rounded-lg sm:w">
         <div className="p-4">
           <label htmlFor="table-search" className="sr-only">

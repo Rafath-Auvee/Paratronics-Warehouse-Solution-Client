@@ -62,7 +62,7 @@ const Login = () => {
     const password = password_ref.current.value;
 
     await signInWithEmailAndPassword(email, password);
-    const { data } = await axios.post("https://intense-plains-05397.herokuapp.com/login", { email });
+    const { data } = await axios.post("https://paratronics-serverless.vercel.app/login", { email });
     localStorage.setItem("accessToken", data.accessToken);
   };
 

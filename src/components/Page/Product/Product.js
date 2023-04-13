@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./Product.css"
+import "./Product.css";
 const Product = (props) => {
   const { id } = useParams();
   const location = useLocation();
@@ -12,7 +12,7 @@ const Product = (props) => {
     const quantity = parseInt(product) + 1;
     const updateproduct = { quantity };
 
-    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
+    fetch(`https://paratronics-serverless.vercel.app/inventory/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -35,13 +35,13 @@ const Product = (props) => {
   };
 
   const moreQuantity = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const number = parseInt(event.target.total_quantity.value);
     const quantity =
-    parseInt(product.quantity) + parseInt(event.target.total_quantity.value);
+      parseInt(product.quantity) + parseInt(event.target.total_quantity.value);
     const updateproduct = { quantity };
 
-    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
+    fetch(`https://paratronics-serverless.vercel.app/inventory/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -70,7 +70,7 @@ const Product = (props) => {
       quantity = quantity - 1;
       const updateproduct = { quantity };
       // console.log(product._id);
-      fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`, {
+      fetch(`https://paratronics-serverless.vercel.app/inventory/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -107,7 +107,7 @@ const Product = (props) => {
   const [no, setNo] = useState(0);
 
   useEffect(() => {
-    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${id}`)
+    fetch(`https://paratronics-serverless.vercel.app/inventory/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -115,13 +115,19 @@ const Product = (props) => {
       });
   }, [product]);
 
+  console.log(product);
   return (
     <div>
       <div className="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
         <div className="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
           <div className="lg:w-1/2">
             <div className="h-64 bg-cover lg:rounded-lg lg:h-full">
-              <img className="container img-height" fluid="true" src={product.url} alt="" />
+              <img
+                className="container img-height"
+                fluid="true"
+                src={product.url}
+                alt=""
+              />
             </div>
           </div>
           <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
@@ -151,15 +157,14 @@ const Product = (props) => {
               </button>
               <form onSubmit={moreQuantity} className="">
                 <input
-                
                   type="number"
                   min="1"
                   name="total_quantity"
                   placeholder="Place quantity"
                   className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm pl-3 py-2.5 mb-2 mr-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 input_width"
                 />
-                <button type="submit"
-                  
+                <button
+                  type="submit"
                   className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
                 >
                   Add More

@@ -22,7 +22,7 @@ const MyItems = () => {
   const email = user?.email
   // useEffect(
   //   (id) => {
-  //     fetch(`https://intense-plains-05397.herokuapp.com/myitems?email=${email}`)
+  //     fetch(`https://paratronics-serverless.vercel.app/myitems?email=${email}`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         setProducts(data);
@@ -41,7 +41,7 @@ const MyItems = () => {
         
     const getOrders = async() =>{
         const email = user?.email;
-        const url = `https://intense-plains-05397.herokuapp.com/myitems?email=${email}`;
+        const url = `https://paratronics-serverless.vercel.app/myitems?email=${email}`;
         try{
           const {data} = await axiosPrivate.get(url);
           setProducts(data);
@@ -66,7 +66,7 @@ const MyItems = () => {
       quantity = quantity - 1;
       const updateproduct = { quantity };
       console.log(product._id);
-      fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
+      fetch(`https://paratronics-serverless.vercel.app/inventory/${product._id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -108,7 +108,7 @@ const MyItems = () => {
     const quantity = parseInt(product.quantity) + 1;
     const updateproduct = { quantity };
     console.log(product._id);
-    fetch(`https://intense-plains-05397.herokuapp.com/inventory/${product._id}`, {
+    fetch(`https://paratronics-serverless.vercel.app/inventory/${product._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -133,7 +133,7 @@ const MyItems = () => {
   const confirmDelete = async (id) => {
     const agree = window.confirm("Confirm?");
     if (agree) {
-      const url = `https://intense-plains-05397.herokuapp.com/inventory/${id}`;
+      const url = `https://paratronics-serverless.vercel.app/inventory/${id}`;
       console.log(id);
       fetch(url, {
         method: "DELETE",

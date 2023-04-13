@@ -28,6 +28,7 @@ Description: Paratronics Warehouse Solutions for electronics inventory. Our syst
 - MongoDB
 
 
+npx create-react-app store-management
 
 
 ## Stackoverflow Question link: https://stackoverflow.com/questions/72093084/passing-props-from-one-component-to-another-in-reactjs-but-returns-undefined

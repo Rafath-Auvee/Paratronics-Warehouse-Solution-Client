@@ -28,7 +28,7 @@ const Header = () => {
   const location = useLocation();
   // useEffect(
   //   (id) => {
-  //     fetch(`https://intense-plains-05397.herokuapp.com/myitems?email=${email}`)
+  //     fetch(`https://paratronics-serverless.vercel.app/myitems?email=${email}`)
   //       .then((res) => res.json())
   //       .then((data) => {
   //         setProducts(data);
@@ -45,7 +45,7 @@ const Header = () => {
         
 //     const getOrders = async() =>{
 //         const email = user?.email;
-//         const url = `https://intense-plains-05397.herokuapp.com/myitems?email=${email}`;
+//         const url = `https://paratronics-serverless.vercel.app/myitems?email=${email}`;
 //         try{
 //           const {data} = await axiosPrivate.get(url);
 //           setProducts(data);
